@@ -62,12 +62,49 @@ const setHotels = asyncHandler(async (req, res) => {
 // @route   PUT api/hotels
 // @access  private
 const updateHotels = asyncHandler(async (req, res) => {
+  const {
+    id,
+    title,
+    subtitle,
+    city,
+    address,
+    description,
+    totalRooms,
+    avalableRooms,
+    photos,
+    price,
+    distance,
+    contact,
+    ratings,
+    features
+  } = req.body
+
+  const newHotel = {
+    title,
+    subtitle,
+    city,
+    address,
+    description,
+    totalRooms,
+    avalableRooms,
+    photos,
+    price,
+    distance,
+    contact,
+    ratings,
+    features
+  }
+
+  console.log(req.params.id)
+
   const hotel = await Hotel.findById(req.params.id)
+
+
   if(!hotel){
     res.status(400)
     throw new Error("Hotel not found")
   } else{
-    const updatedHotel = await Hotel.findByIdAndUpdate(req.params.id, req.body, {new:true})
+    const updatedHotel = await Hotel.findByIdAndUpdate(req.params.id, newHotel, {new:true})
     res.status(200).json(updatedHotel)
   }
 })
