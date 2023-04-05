@@ -27,7 +27,5 @@ router.route('/admin').get(getAdmin)
 // router.route('/admin/login').post()
 
 
-//Admin Routes
-
 
 module.exports = router

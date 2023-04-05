@@ -2,7 +2,6 @@ const asyncHandler = require('express-async-handler')
 const User = require('../model/userModel')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const { use } = require('../routes/mainRoute')
 
 // @desc    Register Users
 // @route   POST api/users
@@ -57,7 +56,7 @@ const loginUser = asyncHandler(async (req,res) => {
     const user = await User.findOne({email})
     if(!user){
         res.status(400)
-        throw new Error("Invalid credentials")
+        throw new Error("user does'nt exists")
     }
     if(user && (await bcrypt.compare(password, user.password))){
         res.status(201).json({
