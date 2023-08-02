@@ -14,6 +14,20 @@ const getHotels = asyncHandler(async (req, res) => {
   }
 })
 
+// @desc    Get hotel by id
+// @route   GET api/hotels/:id
+// @access  private
+const getHotelById = asyncHandler(async (req,res) => {
+  const id = req.params.id
+  const hotel = await Hotel.findById(id)
+  if (hotel) {
+    res.status(200).json(hotel)
+  } else {
+    res.status(400)
+    throw new Error('Some Problem')
+  }
+})
+
 // @desc    Set hotels
 // @route   POST api/hotels
 // @access  private
@@ -95,10 +109,8 @@ const updateHotels = asyncHandler(async (req, res) => {
     features
   }
 
-  console.log(req.params.id)
-
+  // console.log(req.params.id)
   const hotel = await Hotel.findById(req.params.id)
-
 
   if(!hotel){
     res.status(400)
@@ -128,4 +140,5 @@ module.exports = {
   setHotels,
   updateHotels,
   deleteHotels,
+  getHotelById,
 }

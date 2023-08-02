@@ -37,7 +37,10 @@ const OrderSchema = new Schema({
     },
     cancelled: {
         type: Boolean
+    },
+    paymentMethod: {
+        type: String
     }
-})
+}, {timestamps:true})
 
 module.exports = mongoose.model('Order', OrderSchema)

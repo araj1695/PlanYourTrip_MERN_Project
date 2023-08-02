@@ -1,0 +1,66 @@
+
+/* packages */
+.packages .box-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1rem;
+    margin: 1rem;
+  }
+  
+  .packages .box-container .box{
+    position: relative;
+    flex:1 1 20rem;
+    border-radius: .5rem;
+    overflow: auto;
+    height: 360px;
+    box-shadow: 0 1rem 2rem rgba(238, 7, 7, 0.1);
+  }
+  
+  .packages .box-container .box img{
+    height: 58%;
+    width:100%;
+    object-fit: cover;
+  }
+  
+  .packages .box-container .box .content{
+    padding:1rem;
+  }
+  
+  .packages .box-container .box .content h3{
+    font-size:1.2rem;
+    color:rgb(38, 222, 173) !important;
+  }
+  
+  .packages .box-container .box .content h3 i{
+    color: orange;
+  }
+  
+  .packages .box-container .box .content p{
+    font-size:.8rem;
+    color:#666;
+  }
+  
+  .packages .box-container .box .content .stars i{
+    font-size:.8rem;
+    color:orange;
+  }
+  
+  .packages .box-container .box .content .price{
+    font-size: 1rem;
+    color:#333;
+    padding-top: .2rem;
+  }
+  
+  .packages .box-container .box .content .price span{
+    color:#666;
+    font-size: .7rem;
+    text-decoration: line-through;
+  }
+
+  .packages .box-container .box .content .btn{
+    position: absolute;
+    background-color: orange;
+    /* left: 30%; */
+    right: 3%;
+    bottom: 2%;
+  }

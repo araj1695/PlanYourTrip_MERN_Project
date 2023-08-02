@@ -1,0 +1,48 @@
+.bookings{
+    min-height: 80vh;
+}
+
+.cancel{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.613);
+}
+
+.cancel-card{
+    text-align: center;
+    width: 400px;
+    height: 250px;
+    background-color: #e1d0d0ec;
+    box-shadow: 0 .2rem .2rem 0 rgba(0,0,0,.24),0 0 .2rem 0 rgba(0,0,0,.12);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.buttons{
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-around;
+}
+
+.buttons button{
+    width: 100px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    background-color:#0eb550;
+    color: white;
+}
+
+.buttons button:hover{
+    background-color: green;
+    cursor: pointer;
+}

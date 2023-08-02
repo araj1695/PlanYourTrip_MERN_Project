@@ -9,6 +9,17 @@ const getOrders = asyncHandler(async (req, res) => {
   res.status(200).json(orders)
 })
 
+const getOrderByUserId = asyncHandler(async (req,res) => {
+  const id = req.params.id
+  const orders = await Order.find({userId: id}) 
+  if (orders) {
+    res.status(200).json(orders)
+  } else {
+    res.status(400)
+    throw new Error('No Order Found')
+  }
+})
+
 const createOrder = asyncHandler(async (req, res) => {
   const {
     userId,
@@ -23,6 +34,7 @@ const createOrder = asyncHandler(async (req, res) => {
     paid,
     booked,
     cancelled,
+    paymentMethod
   } = req.body
 
   const newOrder = await Order.create({
@@ -38,8 +50,8 @@ const createOrder = asyncHandler(async (req, res) => {
     paid,
     booked,
     cancelled,
+    paymentMethod
   })
-
   if (newOrder) {
     res.status(200).json(newOrder)
   } else {
@@ -48,8 +60,8 @@ const createOrder = asyncHandler(async (req, res) => {
   }
 })
 
-
 const updateOrder = asyncHandler(async (req, res) => {
+
   const {
     userId,
     hotelId,
@@ -59,8 +71,9 @@ const updateOrder = asyncHandler(async (req, res) => {
     checkOutDate,
     nightCount,
     totalAmount,
+    paymentMethod,
     paid,
-  } = await Order.findById(req.params.id)
+  } = await Order.findById(req.body.id)
 
   const newUpdatedOrder = {
     userId,
@@ -71,17 +84,18 @@ const updateOrder = asyncHandler(async (req, res) => {
     checkOutDate,
     nightCount,
     totalAmount,
+    paymentMethod,
     paid,
     booked: req.body.booked,
     cancelled: req.body.cancelled,
   }
 
-  const order = await Order.findById(req.params.id)
+  const order = await Order.findById(req.body.id)
   if(!order){
     res.status(400)
     throw new Error("Order not found")
   } else{
-    const updatedOrder = await Order.findByIdAndUpdate(req.params.id, newUpdatedOrder, {new:true})
+    const updatedOrder = await Order.findByIdAndUpdate(req.body.id, newUpdatedOrder, {new:true})
     res.status(200).json(updatedOrder)
   }
 })
@@ -101,5 +115,6 @@ module.exports = {
   getOrders,
   createOrder,
   updateOrder,
-  deleteOrder
+  deleteOrder,
+  getOrderByUserId
 }

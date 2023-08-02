@@ -1,0 +1,38 @@
+.outter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.form{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form input {
+    margin-top: 10px;
+    padding: 4px 6px;
+    width: min(80%, 400px);
+    border-radius: 5px;
+    background-color:rgb(237, 210, 210);
+    border: none;
+    color: black;
+}
+
+.form button{
+    font-size: 20px;
+    margin-top: 20px;
+    padding: 4px 6px;
+    width: min(80%, 400px);
+    border-radius: 5px;
+    background-color:black;
+    border: none;
+    color: white;
+}
+
+.form button:hover{
+    transform: scale(.96);
+}
